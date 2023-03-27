@@ -3,11 +3,10 @@ apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
   labels:
-    app: nginx
-    app.kubernetes.io/component: nginx
-    app.kubernetes.io/instance: nginx
-  name: nginx
-  namespace: nginx
+    app: nodejs
+    app.kubernetes.io/component: nodejs
+    app.kubernetes.io/instance: nodejs
+  name: nodejs
 spec:  
   failedBuildsHistoryLimit: 5
   nodeSelector: null
