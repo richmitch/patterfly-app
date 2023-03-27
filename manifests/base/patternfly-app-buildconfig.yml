@@ -41,10 +41,10 @@ spec:
     type: Generic
   - type: ConfigChange
   - type: ImageChange
-      imageChange:
-        automatic: true
-        containerNames:
-          - patternfly-app
-        from:
-          kind: ImageStreamTag
-          name: nodejs-14:latest
+    imageChange:
+      automatic: true
+      containerNames:
+        - patternfly-app
+      from:
+        kind: ImageStreamTag
+        name: nodejs-14:latest
