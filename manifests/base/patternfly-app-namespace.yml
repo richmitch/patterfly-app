@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: patternfliy-app
+  name: patternfly-app
   annotations:
     openshift.io/description: Application used for testing the Patternfly framework
     openshift.io/display-name: Patternfly Test

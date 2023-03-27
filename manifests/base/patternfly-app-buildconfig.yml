@@ -14,22 +14,22 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: santa-message:latest
+      name: patternfly-app:latest
   runPolicy: Serial
   source:
-    contextDir: manifests/applications/santa-message
+    contextDir: .
     git:
       ref: main
-      uri: https://gitlab.consulting.redhat.com/woolworths-group/stores-openshift-poc
-    sourceSecret:
-      name: gitlab-secret
+      uri: https://github.com/richmitch/patternfly-app
     type: Git
   strategy:
     dockerStrategy:
       from:
         kind: ImageStreamTag
-        name: nginx:1.20-ubi8
-        namespace: openshift
+        name: nodejs-14:latest
+      dockerfilePath: Dockerfile
+      buildArgs:
+        NODE_ENV: production
     type: Docker
   successfulBuildsHistoryLimit: 5
   triggers:
@@ -41,3 +41,10 @@ spec:
     type: Generic
   - type: ConfigChange
   - type: ImageChange
+      imageChange:
+        automatic: true
+        containerNames:
+          - patternfly-app
+        from:
+          kind: ImageStreamTag
+          name: nodejs-14:latest

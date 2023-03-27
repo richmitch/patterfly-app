@@ -1,9 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: patternfly-app
+  annotations:
+    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"patternfly-app:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"patternfly-app\")].image"}]'
   labels:
-    app: patternfly
+    app: patternfly-app
+    app.kubernetes.io/component: patternfly-app
+    app.kubernetes.io/instance: patternfly-app    
+  name: patternfly-app
 spec:
   replicas: patched-in-overlays
   selector:
