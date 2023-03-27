@@ -1,0 +1,12 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    app: patternfly-app
+    app.kubernetes.io/component: patternfly-app
+    app.kubernetes.io/instance: patternfly-app
+  name: patternfly-app
+spec:
+  lookupPolicy:
+    local: false

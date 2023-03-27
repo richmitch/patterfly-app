@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patternfly-app
+  labels:
+    app: patternfly
+spec:
+  replicas: patched-in-overlays
+  selector:
+    matchLabels:
+      app: patternfly-app
+  template:
+    metadata:
+      labels:
+        app: patternfly-app
+    spec:
+      containers:
+        - name: patternfly-app
+          image: image-registry.openshift-image-registry.svc:5000/patternfly-app:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30

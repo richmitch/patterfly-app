@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: patternfly-app
+  labels:
+    app: patternfly-app
+    app.kubernetes.io/component: patternfly-app
+    app.kubernetes.io/instance: patternfly-app
+spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 3000
+  selector:
+    app: patternfly-app
+  type: ClusterIP
